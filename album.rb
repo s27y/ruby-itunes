@@ -4,6 +4,7 @@
 
 # Class that encodes details of an album.
 class Album
+  include Pred
 	attr_accessor :name, :tracks, :length, :artist,:owners, :id
 	def initialize(name, tracks, length, artist, owners)
 		@name = name
@@ -18,11 +19,6 @@ class Album
 	def to_s
 		puts "The album #{@name} by #{@artist}. #{@tracks} tracks #{@length} owned by #{@owners}\n"
 	end	
-
-  # Method that checks if an object given to it is an album.
-	def isa?
-		instance_of?(Album)
-	end
 
   # Method makes an album object; just uses Album.new; really
   # just being a bit explicit and obvious.

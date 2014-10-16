@@ -10,6 +10,7 @@ require_relative 'song'
 require_relative 'reader'
 require_relative 'utilities'
 require_relative 'error'
+require_relative 'predicate'
 
 #songs_file = ARGV[0]                  #for command line
 #owners_file = ARGV[1]                 #for command line

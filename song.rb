@@ -5,6 +5,7 @@
 
 # Class that encodes details of a song.
 class Song
+  include Pred
   attr_accessor :name, :album, :artist, :time, :owners, :id
   def initialize(name, album, artist, time, owners, id)
     @name = name
@@ -19,11 +20,6 @@ class Song
   def to_s
     puts "<< #{@name} >> by #{@artist} in their album #{@album} is owed by #{@owners} .\n"
   end 
-
-  # Method that checks if the object given to it is a song.
-  def isa?
-    instance_of?(Song)
-  end
 
   # Method that plays a song (sort of ;-)
   def play_song
