@@ -34,5 +34,3 @@ class Array
     #self.join(" ").split(" ").uniq   #this could be more elegant
   end
 end
-
-###
