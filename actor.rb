@@ -21,8 +21,8 @@ class Actor
   # the song-ids and reduce it to an array of unique owner-name strings. We then use these to build
   # actor obejcts using Actor.new.  The method returns an array of actor-objects.
 
-  def self.build_all(actors = [])
-    actor_names = $hash_owners.values.clean_up
+  def self.build_all(data,actors = [])
+    actor_names = data.hashes.values.clean_up
     actor_names.each {|name| actors << Actor.new(name)}
     actors
   end
@@ -37,8 +37,8 @@ class Actor
   # Method that takes an actor finds all the songs owned by the actor.
   # It returns a array of song objects.
 
-  def what_songs_does_he_own()
-      $songs.select{|song| song.owners.include?(@name)}
+  def what_songs_does_he_own(data)
+      data.songs.select{|song| song.owners.include?(@name)}
   end
   
 end

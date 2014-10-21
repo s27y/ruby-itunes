@@ -8,8 +8,8 @@
 # structures with the submitted name.
 module Util
    #will fetch object give string that is its name
-   def self.fetch(string_item, out = [])
-       all = $songs + $actors #+ $albums
+   def self.fetch(data,string_item, out = [])
+       all = data.songs + data.actors + data.albums
 	     found = all.select{|obj| string_item == obj.name}
        if found.size == 0
          then MyErr.new("not_found_error", string_item, "fetch").do_it

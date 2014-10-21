@@ -31,16 +31,11 @@ class Album
   # It returns an array of album objects.  It calls another class method that
   # builds a single album, given the name of that album.
 
-  def self.build_all(albums = [])
-    album_names = []
-  	$songs.each do |s|
-  		album_names << s.album
-  	end
-
-    album_names.uniq!
-
-    p album_names
-    album_names.each {|al| albums << Album.build_an_album_called(al)}
+  def self.build_all(data, albums = [])
+    album_names = data.songs.collect{|songs| songs.album}
+  	album_names.uniq.each do |album_name|
+      albums << self.build_an_album_called(data, album_name)
+    end
 
     albums
   end
@@ -49,10 +44,10 @@ class Album
   # builds up arrays of the song-names (tracks), runtimes, artist names.  These all get used
   # to populate the various attributes of the album object.
 
-  def self.build_an_album_called(album_name)
+  def self.build_an_album_called(data,album_name)
     length = 0.0
     songs,artists,owners = [], [], []
-    songs = $songs.select {|s| s.album == album_name}
+    songs = data.songs.select {|s| s.album == album_name}
 
     songs.each do |s|
       length += s.time
